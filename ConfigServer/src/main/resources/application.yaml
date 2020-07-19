@@ -1,0 +1,23 @@
+server:
+  port: 8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/paulsan1/mscasestudy.git
+          username: paulsan1@in.ibm.com
+          password: P@ssw0rd@IBM
+          skipSslValidation: true  
+    bus:
+      enabled: true
+      destination: configXchangebus                   
+  rabbitmq:
+    host: rabbitmq-master
+    port: 5672
+       
