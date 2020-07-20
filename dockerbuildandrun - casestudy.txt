@@ -16,7 +16,11 @@ docker build -t santanupaul/cartms:1 .
 docker run -d --name cartms -p 8082:8082 --network ms-chassis-nw --env CartMS.configserverurl=http://configserver:8888 --env CartMS.eureka.url=http://eurekaserver:8761/eureka santanupaul/cartms:1
 
 docker build -t santanupaul/auditms:1 .
-	
+docker run -d --name auditms --network ms-chassis-nw --env AuditMS.configserverurl=http://configserver:8888 --env AuditMS.eureka.url=http://eurekaserver:8761/eureka santanupaul/auditms:1
+
+docker build -t santanupaul/orderms:1 .
+docker run -d --name orderms -p 8084:8084 --network ms-chassis-nw --env OrderMS.configserverurl=http://configserver:8888 --env OrderMS.eureka.url=http://eurekaserver:8761/eureka santanupaul/orderms:1
+
 
 docker build -t santanupaul/ecartportal:1 .
 docker run -d --name ecartportal -p 8080:8080 --network ms-chassis-nw --env EcartPortal.configserverurl=http://configserver:8888 --env EcartPortal.eureka.url=http://eurekaserver:8761/eureka santanupaul/ecartportal:1
