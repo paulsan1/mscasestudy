@@ -19,7 +19,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://192.168.99.100:8761/eureka
+      defaultZone: ${CartMS.eureka.url:http://192.168.99.100:8761/eureka}
 
 spring:
   h2:
