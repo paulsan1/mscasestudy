@@ -1,0 +1,246 @@
+==== MS Key Concepts ====================
+Isolation ( Isolate Everything !) - Code Simplicity- Services, Teams, Scalability
+Distributed System 
+Single Responsibility (Single-responsiblity principle)
+Always oriented around business or domain capabilities or facts.
+It is a journey (constant evolution) -> Evolutionary Architectures.
+Loose-Coupling and high cohesion
+Automate Everything
+	Infrstructure as Code
+Design and Expect failure
+Eventual Consistency
+2PC is an anti-pattern
+High(and automated) observability
+Autonomy (Team Cohesiveness)
+
+========================================
+MS is SOA done well !!!
+
+SOA ( Coarse Grained)
+MS ( Fine Grained)
+"Micro" - Doesnt mean lines of code. It implies part of your domain which is related.
+You build it, you run it !
+
+==============REFERENCES===========================
+https://martinfowler.com/articles/microservices.html
+https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing
+https://www.reactivemanifesto.org/
+https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e
+https://www.youtube.com/watch?v=_I94-tJlovg
+https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations/dp/1942788002
+https://12factor.net/
+https://www.heroku.com/
+https://w3.ibm.com/services/lighthouse/documents/145695
+https://www.google.com/search?q=eric+evans+domain+driven+design&rlz=1C1GCEU_en__866__866&sxsrf=ALeKk0289XNEc1woFkJMMZFqkTkHWsCzrg:1586164925850&tbm=isch&source=iu&ictx=1&fir=cllW50KjI5xEgM%253A%252CBcCTF1C4UZSW-M%252C%252Fm%252F03czw2b&vet=1&usg=AI4_-kT5Egs9QHYVmuKXr3lrD2M3VObyvA&sa=X&ved=2ahUKEwjjktfnvNPoAhWSxzgGHVL9ACsQ_B0wHXoECAQQAw#imgrc=cllW50KjI5xEgM:
+
+https://www.google.com/search?q=Implemeting+domain+driven+design+vaugn+vernon&tbm=isch&ved=2ahUKEwiQhIHrvNPoAhUY03MBHZclCbEQ2-cCegQIABAA&oq=Implemeting+domain+driven+design+vaugn+vernon&gs_lcp=CgNpbWcQAzoECCMQJzoFCAAQgwE6AggAOgQIABBDOgQIABAeOgYIABAKEBhQ6PsDWJeABWDngQVoBHAAeACAAfABiAGaPJIBBjAuNDEuNpgBAKABAaoBC2d3cy13aXotaW1n&sclient=img&ei=xPSKXpCSMpimz7sPl8ukiAs&rlz=1C1GCEU_en__866__866
+
+https://www.amazon.in/Release-Production-Ready-Software-Pragmatic-Programmers/dp/0978739213
+
+https://en.wikipedia.org/wiki/Conway%27s_law
+https://en.wikipedia.org/wiki/Emergence
+http://www.laputan.org/mud/
+https://samnewman.io/books/building_microservices/
+https://microservices.io/
+http://tryrabbitmq.com/
+
+https://www.youtube.com/watch?v=lKXe3HUG2l4
+https://www.youtube.com/watch?v=rmueBVrLKcY
+https://www.youtube.com/watch?v=bo5WL5IQAd0
+
+https://www.ibm.com/cloud/products
+
+
+==============CLOUD=====================
+Lowers the barrier for entry
+
+Q: What is cloud ?
+----------------------------------------------------------------------------------------------------
+compute - processor
+memory - RAM
+storage - disk/ssd
+operating system 
+network
+ == server
+ + server
+ + server
+ + server 
+  == Data Center
+	Costs
+		- Facility Costs
+		- Infrastructure Costs
+		- Maintenance costs
+		- Power costs
+		- Cooling Fans
+		- Personel
+		- Patching 
+Amazon Web Services 
+	- hypervisor - Software Defined Hosts.
+	- Virtal hosts - VMs (Virtal Machines) - Usage can be monitored 
+	- IaaS , SaaS, PaaS , *aaS
+	- Cloud Providers 
+		Infinite access to servies , over internet , using a controlled usage based cost model.
+		everything is code (like infrastructure)
+
+Fast innovate
+Fast to run and deploy - Business value can be delivered much faster
+Saving are optimized. 
+Developers can focus on business services.
+
+IBM Cloud (multi-service)
+	> IKS (IBM K8S Services)
+	> Redhat OpenShift (K8S - PaaS)
+
+
+Q: What is cloud-native ?
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+===========Spring Cloud=====
+https://spring.io/projects
+https://start.spring.io/
+
+
+
+======Docker=========
+based on linux containers
+Java
+	Write Once Run Anywhere (WORA)
+	Build Once,Run Anywhere (BORA)
+
+https://docs.docker.com/
+https://hub.docker.com/?ref=login
+
+docker-machine create -d "virtualbox" docker-vm3
+docker images
+docker pull nginx:latest
+docker run -d nginx
+docker run -d -p 80:80 --name mynginx nginx
+docker container kill 5c13c97e9e23
+docker ps
+docker container stop 1696a8e642f8 91ab8776b340
+docker ps -a
+docker container prune  // Remove all stopped containers.
+docker container rm e7e09d318ed9
+docker container kill e7e09d318ed9
+docker exe -it mynginx /etc/bin // run a command in container, in this case would present a shell.
+docker inspect <container>
+
+docker logs bfad35683312 -f
+
+Image is build on a layered file system (union file system)
+
+
+docker network ls
+docker network create <name>
+docker inspect <networkname>
+
+
+docker push  kapilshekharraina/cloudapigatewaykol:1
+
+
+docker.io/kapilshekharraina/cloudapigatewaykol:1
+{docker registry}/{subjectname}/imagename:<imagetag>
+
+docker tag kapilshekharraina/cloudapigatewaykol:1 kapilshekharraina/cloudapigatewaykol:latest
+
+docker login
+
+
+=======K8S======================
+https://landscape.cncf.io/
+minikube ( dev )
+minishift ( OpenShift 1 worker and 1 master)
+https://kubernetes.io/docs/home/
+https://www.katacoda.com/
+
+kubectl create ns demo
+kubectl run nginx --image=nginx --replicas=5 -n demo
+kubectl get pods -n demo
+
+kubectl get events -n demo
+
+kubectl get events -n demo
+kubectl get events -n demo -w
+
+kubectl get deployment -n demo
+kubectl scale deployment nginx --replicas=1 -n demo
+
+kubectl version
+kubectl version --short
+
+kubectl config view
+
+t all nodes on Virtual VM
+Login to all nodes and execute the following....
+sudo swapoff -a
+
+On Master
+1. sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+2. cat /home/master/.kube/config
+3. kubectl get nodes
+4. 
+	kubectl apply -f admin-user.yaml
+	kubectl describe sa admin-user -n kube-system
+	kubectl describe secret admin-user-token-gm7rn -n kube-system
+	
+
+5. Copy the token.
+
+On Windows Hosts
+kubectl config set-cluster <cluster-name> --insecure-skip-tls-verify=true --server=https://<master-ip>:6443
+kubectl config set-credentials <crednam> --token=<copied token from master>
+kubectl config set-context <context-name> --cluster=<cluster-name> --user=<crednam> 
+kubectl config use-context <context-name>
+
+kubectl get nodes
+
+https://cdn2.hubspot.net/hubfs/1665891/Assets/Kubernetes%20Security%20-%20Operating%20Kubernetes%20Clusters%20and%20Applications%20Safely.pdf?t=1538587424944&_hsenc=p2ANqtz-_7jbqtRATdJAm7eFxtd5u4nVLYuIlrF67z5qbslZ10-I63-RZ4ogqu9iuuEMsx7fskPYWww2jDpVjOvrLs
+
+============== Run the Case Study =============================
+Go to mschassis/k8s/rabbitmq
+
+kubectl apply -f rabbitmq-dep-w-k8s.yaml
+kubectl apply -f rabbitmq-dep-k8s.yaml
+kubectl apply -f rabbitmq-svc-k8s.yaml
+
+
+Go to mschassis/zipkin
+kubectl apply -f zipkin-dep-k8s.yaml
+kubectl apply -f zipkin-svc-k8s.yaml
+
+kubectl apply -f configserver-dep-k8s.yaml
+kubectl apply -f configserver-svc-k8s.yaml
+... once config server runs ...
+kubectl apply -f eureka-dep-k8s.yaml
+kubectl apply -f eureka-svc-k8s.yaml
+
+kubectl apply -f cloudapigateway-dep-k8s.yaml
+kubectl apply -f cloudapigateway-svc-k8s.yaml
+
+kubectl apply -f discountms-dep-k8s.yaml
+
+kubectl apply -f productms-dep-k8s.yaml
+=======================
+
+https://micrometer.io/
+
+== End of Session -===
+
+
+
+
+
+
+
+
+
+
