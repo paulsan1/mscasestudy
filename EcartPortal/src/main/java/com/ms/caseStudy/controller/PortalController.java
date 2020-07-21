@@ -204,15 +204,16 @@ public class PortalController {
 		return modelAndView;
 	}
 
-	/*
-	 * @GetMapping("/findLogs") public ModelAndView findLogs(HttpSession
-	 * httpSession) { System.out.println("call Audit logs"); List<AuditData>
-	 * auditLogs =
-	 * portalService.findLogs(httpSession.getAttribute("acctoken").toString());
-	 * System.out.println("logs " + auditLogs.size());
-	 * httpSession.setAttribute("auditLogs", auditLogs); return new
-	 * ModelAndView("home", "auditLogs", auditLogs); }
-	 */
+	
+	 @GetMapping("/findLogs") public ModelAndView findLogs(HttpSession
+			 httpSession) { System.out.println("call Audit logs"); List<AuditData>
+	  auditLogs =
+	  portalService.findLogs(httpSession.getAttribute("acctoken").toString());
+	  System.out.println("logs " + auditLogs.size());
+	 httpSession.setAttribute("auditLogs", auditLogs); return new
+	  ModelAndView("home", "auditLogs", auditLogs); 
+	 }
+	 
 	
 	@GetMapping("/orderList")
 	public ModelAndView getOrders(HttpSession httpSession) {

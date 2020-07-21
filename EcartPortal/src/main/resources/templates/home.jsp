@@ -21,7 +21,7 @@
 
 		</div>
 		<div style="position: absolute;margin-top: 220px;">
-			<span>Audit Logs</span>
+			<a href="/findLogs">Audit Logs</a>
 			<table border="1">
 				<thead>
 					<tr>
