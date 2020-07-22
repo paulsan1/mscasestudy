@@ -1,0 +1,37 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: orderms
+    version: v1
+  name: productms
+spec: 
+  strategy: # Default, so usually not specified
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1  # specifies the maximum number of Pods that can be created over the desired number of Pods
+      maxUnavailable: 25% #specifies the maximum number of Pods that can be unavailable during the update process
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: productms
+      version: v1
+  template: 
+    metadata: 
+      labels: 
+        app: productms
+        version: v1
+
+    spec: 
+
+      containers: 
+        - 
+          image: "santanupaul/productms:1"
+          imagePullPolicy: Always
+          name: productms  
+          env:
+            - name: ProductMS.configserverurl
+              value: "http://configserver:8888"
+            - name: ProductMS.eureka.url
+              value: "http://eureka:8761/eureka"  

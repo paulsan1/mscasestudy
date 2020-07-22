@@ -1,0 +1,44 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: oauth2server
+    version: v1
+  name: oauth2server
+spec: 
+  strategy: # Default, so usually not specified
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1  # specifies the maximum number of Pods that can be created over the desired number of Pods
+      maxUnavailable: 25% #specifies the maximum number of Pods that can be unavailable during the update process
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: oauth2server
+      version: v1
+  template: 
+    metadata: 
+      labels: 
+        app: oauth2server
+        version: v1
+
+    spec: 
+
+      containers: 
+        - 
+          image: "santanupaul/oauth2server:1"
+          imagePullPolicy: Always
+          name: oauth2server  
+          env:
+            - name: Oauth2server.configserverurl
+              value: "http://configserver:8888"
+            - name: Oauth2server.eureka.url
+              value: "http://eureka:8761/eureka"  
+          ports: 
+#          - containerPort: 8081   
+          - name: httpport
+            containerPort: 9999
+            hostPort: 9999
+              
+                    

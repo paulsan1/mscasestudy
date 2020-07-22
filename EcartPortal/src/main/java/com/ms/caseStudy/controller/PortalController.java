@@ -84,7 +84,7 @@ public class PortalController {
 			System.out.println("   --  "+loginBean);
 			
 			HttpClient client = new HttpClient();
-			PostMethod postMethod = new PostMethod("http://" + "192.168.99.100" + ":" + instance.getPort() +"/oauth/token");
+			PostMethod postMethod = new PostMethod("http://" + "192.168.99.105" + ":" + instance.getPort() +"/oauth/token");
 			postMethod.setRequestBody(
 					"grant_type=password&username=" + loginBean.getUserName() + "&password=" + loginBean.getPassword());
 			Header header = new Header("Content-type", "application/x-www-form-urlencoded");
