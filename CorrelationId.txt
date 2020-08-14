@@ -29,3 +29,6 @@ public class CorrelationInterceptor extends HandlerInterceptorAdapter {
         return UUID.randomUUID().toString();
     }
 }
+
+
+%d %p [%c] %X{correlationId} - &lt;%m&gt;%n
