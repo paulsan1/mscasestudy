@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -26,6 +28,8 @@ import com.ms.caseStudy.CartMS.repo.CartRepository;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
+	
+	Logger logger = LoggerFactory.getLogger(CartController.class);
 
 	@Autowired
 	CartRepository cartRepository;
@@ -49,30 +53,31 @@ public class CartController {
 			cartList.add(cart);
 		}
 		cartRepository.saveAll(cartList);
+		logger.debug("add to cart successful");
 	}
 
 	@GetMapping("/allCartList/{user}")
 	public List<Cart> getAllCart(@PathVariable String user) {
 		List<Cart> actual = cartRepository.getCartList(user);
 		for(Cart cart : actual) {
-			System.out.println(cart);
+			logger.debug("Cart object "+cart.toString());
 		}
-		System.out.println(actual.size());
+		logger.debug("Cart objects size"+actual.size());
 		return actual;
 	}
 	
 	@PostMapping("/orderCart")
 	public void orderCart(@RequestBody int cartId) {
-		System.out.println("orderCart ::::  "+cartId);
+		logger.debug("orderCart ::::  "+cartId);
 		StringBuilder message = new StringBuilder() ;
 		Optional<Cart> cartBean = cartRepository.findById(cartId);
 		cartRepository.deleteById(cartId);
 		Cart cart = cartBean.get();
 		message.append(cart.getProductName()).append("|").append(cart.getPrice());
-		System.out.println("message : "+message);
+		logger.debug("message : "+message);
 		Message<String> msg = MessageBuilder.withPayload(message.toString()).build();
 	    this.orderChannel.send(msg);
-	    System.out.println("order submitted");
+	    logger.debug("order submitted");
 	}
 
 }

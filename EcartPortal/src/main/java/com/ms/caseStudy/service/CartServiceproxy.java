@@ -17,10 +17,10 @@ import com.ms.caseStudy.bean.Product;
 public interface CartServiceproxy {
 	
 	@RequestMapping(value = "/cart/allCartList/{user}", method = RequestMethod.GET)
-	public List<Cart> getCarts(@PathVariable String user,@RequestHeader("Authorization") String token );
+	public List<Cart> getCarts(@PathVariable String user,@RequestHeader("Authorization") String token,@RequestHeader("X-Correlation-Id") String coId );
 	
 	@RequestMapping(value = "/cart/cartAdd", method = RequestMethod.POST)
-	public void addToCart(@RequestBody CartBean cartBean,@RequestHeader("Authorization") String token);
+	public void addToCart(@RequestBody CartBean cartBean,@RequestHeader("Authorization") String token,@RequestHeader("X-Correlation-Id") String coId);
 	
 	@RequestMapping(value = "/cart/orderCart", method = RequestMethod.POST)
 	public List<Product> orderCart(@RequestBody int id,@RequestHeader("Authorization") String token);

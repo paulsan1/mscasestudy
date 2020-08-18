@@ -3,6 +3,8 @@ package com.ms.caseStudy.ProductMS.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +19,15 @@ import com.ms.caseStudy.ProductMS.repo.ProductRepository;
 @RequestMapping("/products")
 public class ProductController {
 	
+	Logger logger = LoggerFactory.getLogger(ProductController.class);
+	
 	@Autowired
 	ProductRepository productRepository ; 
 	
 	@GetMapping("/allproducts")
 	public List<Product> getAllProducts() {
 		List<Product> products = productRepository.findAll();
-		System.out.println("size "+products.size());
+		logger.debug(" allproducts : size "+products.size());
 		return productRepository.findAll();
 	}
 	
@@ -33,7 +37,7 @@ public class ProductController {
 		if(products == null) {
 			products = new ArrayList<Product>();
 		}
-		System.out.println("size1 "+products.size());
+		logger.debug("size1 "+products.size());
 		return products;
 	}
 	
@@ -41,7 +45,7 @@ public class ProductController {
 	public Product searchById(@PathVariable int id) {
 		Optional<Product> product = productRepository.findById(id);
 		
-		System.out.println("size1 "+product.isPresent());
+		logger.debug(" productById size1 "+product.isPresent()+ "for Id : "+id);
 		return product.get();
 	}
 

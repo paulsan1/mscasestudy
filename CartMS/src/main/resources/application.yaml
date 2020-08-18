@@ -56,3 +56,8 @@ spring:
       bindings:
         orderChannel:
            destination: orders        
+logging:
+  pattern:
+    console: '%d %p %X{correlationId} %M\(%F:%L\) - %msg%n'
+  level:
+    com.ms.caseStudy.CartMS: DEBUG       

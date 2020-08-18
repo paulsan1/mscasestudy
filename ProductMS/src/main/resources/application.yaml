@@ -51,5 +51,10 @@ spring:
   cloud:
     bus:
       enabled: true
-      destination: configXchangebus      
-      
+      destination: configXchangebus    
+        
+logging:
+  pattern:
+    console: '%d %p %X{correlationId} %M\(%F:%L\) - %msg%n'
+  level:
+    com.ms.caseStudy.ProductMS: DEBUG   

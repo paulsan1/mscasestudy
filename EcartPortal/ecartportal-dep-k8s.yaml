@@ -27,7 +27,7 @@ spec:
 
       containers: 
         - 
-          image: "santanupaul/ecartportal:1"
+          image: "santanupaul/ecartportal:2"
           imagePullPolicy: Always
           name: ecartportal
           env:

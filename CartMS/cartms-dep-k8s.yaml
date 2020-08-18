@@ -27,7 +27,7 @@ spec:
 
       containers: 
         - 
-          image: "santanupaul/cartms:1"
+          image: "santanupaul/cartms:2"
           imagePullPolicy: Always
           name: cartms  
           env:

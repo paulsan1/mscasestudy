@@ -13,6 +13,8 @@ import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -48,6 +50,8 @@ public class PortalController {
 	
 	@Autowired
 	private DiscoveryClient discoveryClient;
+	
+	Logger logger = LoggerFactory.getLogger(PortalController.class);
 
 	 private MessageChannel greet;
 	 
@@ -142,9 +146,9 @@ public class PortalController {
 
 	@GetMapping("/findProduts")
 	public ModelAndView findProducts(HttpSession httpSession) {
-		System.out.println("call products");
+		logger.debug("call products");
 		List<Product> products = portalService.findProducts(httpSession.getAttribute("acctoken").toString());
-		System.out.println("products " + products.size());
+		logger.debug("products " + products.size());
 		httpSession.setAttribute("products", products);
 		return new ModelAndView("home", "products", products);
 	}
@@ -159,16 +163,16 @@ public class PortalController {
 		if(pids.length > 0) {
 			for(String i : pids) {
 				products.add(portalService.findProductsById(Integer.parseInt(i),httpSession.getAttribute("acctoken").toString()));
-				System.out.println("find products");
+				logger.debug("find products by id "+i);
 			}
 			CartBean bean = new CartBean();
 			bean.setUserName(httpSession.getAttribute("user").toString());
 			bean.setProducts(products);
 			portalService.addToCart(bean,httpSession.getAttribute("acctoken").toString());
-			System.out.println("added to cart");
-			System.out.println("user "+httpSession.getAttribute("user").toString());
+			logger.debug("added to cart");
+			logger.debug("user "+httpSession.getAttribute("user").toString());
 			carts = portalService.getCart(httpSession.getAttribute("user").toString(),httpSession.getAttribute("acctoken").toString());
-			System.out.println("carts "+carts.size());
+			logger.debug(" fetch carts "+carts.size());
 		}
 		
 		products = portalService.findProducts(httpSession.getAttribute("acctoken").toString());

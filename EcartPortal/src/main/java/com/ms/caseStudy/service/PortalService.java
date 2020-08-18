@@ -2,6 +2,7 @@ package com.ms.caseStudy.service;
 
 import java.util.List;
 
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class PortalService {
 	
 	public Product findProductsById(int id,String token) {
 		token = "Bearer "+token;
-		return productServiceproxy.searchByProductId(id,token);
+		return productServiceproxy.searchByProductId(id,token,MDC.get("correlationId"));
 	}
 	
 	public void orderCart(int id,String token) {
@@ -50,13 +51,13 @@ public class PortalService {
 	public void addToCart(CartBean bean,String token) {
 		System.out.println("------ token  "+token);
 		token = "Bearer "+token;
-		cartServiceproxy.addToCart(bean,token);
+		cartServiceproxy.addToCart(bean,token,MDC.get("correlationId"));
 		
 	}
 	
 	public List<Cart> getCart(String user,String token) {
 		token = "Bearer "+token;
-		return cartServiceproxy.getCarts(user,token);
+		return cartServiceproxy.getCarts(user,token,MDC.get("correlationId"));
 	}
 	
 	public List<AuditData> findLogs(String token) {

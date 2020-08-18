@@ -24,7 +24,7 @@ public class ProductServiceFallback implements ProductServiceproxy {
 	}
 
 	@Override
-	public Product searchByProductId(int id,String token) {
+	public Product searchByProductId(int id, String token, String coId) {
 		// TODO Auto-generated method stub
 		return new Product();
 	}

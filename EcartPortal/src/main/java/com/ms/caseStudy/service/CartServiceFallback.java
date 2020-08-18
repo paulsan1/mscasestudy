@@ -11,24 +11,22 @@ import com.ms.caseStudy.bean.Product;
 
 @Component
 public class CartServiceFallback implements CartServiceproxy {
-
 	
-	@Override
-	public List<Cart> getCarts(String user,String token) {
-		System.out.println("call fallback");
-		return new ArrayList<Cart>();
-	}
-
-	@Override
-	public void addToCart(CartBean cartBean, String token) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public List<Product> orderCart(int id, String token) {
 		// TODO Auto-generated method stub
 		return new ArrayList<>();
+	}
+
+	@Override
+	public List<Cart> getCarts(String user, String token, String coId) {
+		return new ArrayList<Cart>();
+	}
+
+	@Override
+	public void addToCart(CartBean cartBean, String token, String coId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

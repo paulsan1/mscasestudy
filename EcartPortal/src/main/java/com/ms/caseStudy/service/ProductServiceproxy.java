@@ -20,5 +20,5 @@ public interface ProductServiceproxy {
 	public List<Product> searchByProductIds(@PathVariable String ids ,@RequestHeader("Authorization") String token);
 
 	@RequestMapping(value = "/products/productById/{id}", method = RequestMethod.GET)
-	public Product searchByProductId(@PathVariable int id ,@RequestHeader("Authorization") String token);
+	public Product searchByProductId(@PathVariable int id ,@RequestHeader("Authorization") String token,@RequestHeader("X-Correlation-Id") String coId);
 }
